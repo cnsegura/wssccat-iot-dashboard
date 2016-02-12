@@ -64,7 +64,19 @@
         var baseuri = 'http://wssccatiot.westus.cloudapp.azure.com';
         var createConsumer = baseuri + '/consumers/sensor_consumer';
         var str = ('{""name"":""' + instance + '"", ""format"": ""json"", ""auto.offset.reset"": ""smallest""}');
-        $.post(createConsumer, str, function(data, status) {alert("data: " + data + "\nStatus: "+ status, "application/vnd.kafka.v1+json")});
+        $.ajax({
+            url: createConsumer,
+            type: 'POST',
+            beforeSend: function (xhr) {
+                xhr.setRequestHeader('ConfluentPOSTConsumerHeader');
+            },
+            data: {},
+            ContentType: 'application/vnd.kafka.v1+json',
+            success: function () { },
+            error: function () { },
+        });
+
+        //$.post(createConsumer, str, function (data, status) { alert("data: " + data + "\nStatus: " + status, "application/vnd.kafka.v1+json") });
         $("p:last").text(str);
     }
     </script>
