@@ -10,15 +10,15 @@
         <ul id="products" />
     </div>
     <div>
-        <h2>Start/Stop display stream</h2>
-        <input type="button" value="start" onclick="fetch();" />
-        <p id="product" />
+        <h2>Start/Stop sensor display stream</h2>
+        <input type="button" value="start" onclick="fetch('sensor');" />
+        <p id="sensor" />
     </div>
 
     <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.0.3.min.js"></script>
     <script>
         var baseuri = 'wssccatiot.westus.cloudapp.azure.com';
-        var createConsumer = "/consumers/sensor_consumer" + baseuri;
+        var createConsumer = '/consumers/sensor_consumer' + baseuri;
 
     $(document).ready(function () {
       // Send an AJAX request then do other stuff  and more stuff   
@@ -36,9 +36,16 @@
       return item.Name + ': $' + item.Price;
     }
 
-    function fetch() {
+    function instanceId(iid){
+
+    }
+
+    function fetch(instance) {
       
-      $.getJSON(uri + '/' + id)
+        var instanceData = ('{""name"":""' + instance + '"", ""format"": ""json"", ""auto.offset.reset"": ""smallest""}');
+        $.post(createConsumer, instanceData, instanceId(iid), "application/vnd.kafka.v1+json")
+
+        $.getJSON(uri + '/' + id)
           .done(function (data) {
             $('#product').text(formatItem(data));
           })
