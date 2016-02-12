@@ -11,10 +11,14 @@
     </div>
     <div>
         <h2>Start/Stop sensor display stream</h2>
-        <input type="button" value="start" onclick="fetch('sensor');" />
+        <input type="button" value="start" onclick="fetch()" />
         <p id="sensor" />
     </div>
-
+    <div>
+        <h2>DEBUG AREA</h2>
+        <input type="button" value="debug" onclick="debug('INSTANCE')" />
+        <p id="debug" />
+    </div>
     <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.0.3.min.js"></script>
     <script>
         var baseuri = 'wssccatiot.westus.cloudapp.azure.com';
@@ -40,7 +44,7 @@
 
     }
 
-    function fetch(instance) {
+    function fetch() {
       
         var instanceData = ('{""name"":""' + instance + '"", ""format"": ""json"", ""auto.offset.reset"": ""smallest""}');
         $.post(createConsumer, instanceData, instanceId(iid), "application/vnd.kafka.v1+json")
@@ -52,6 +56,16 @@
           .fail(function (jqXHR, textStatus, err) {
             $('#product').text('Error: ' + err);
           });
+    }
+
+    function debug(instance)
+    {
+        //var instance = "INSTANCE";
+        var baseuri = 'http://wssccatiot.westus.cloudapp.azure.com';
+        var createConsumer = baseuri + '/consumers/sensor_consumer';
+        var str = ('{""name"":""' + instance + '"", ""format"": ""json"", ""auto.offset.reset"": ""smallest""}');
+        $.post(createConsumer, str, function(data, status) {alert("data: " + data + "\nStatus: "+ status, "application/vnd.kafka.v1+json")});
+        $("p:last").text(str);
     }
     </script>
 </body>
