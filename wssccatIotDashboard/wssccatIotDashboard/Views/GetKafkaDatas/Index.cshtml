@@ -1,0 +1,51 @@
+﻿@model IEnumerable<wssccatIotDashboard.Models.GetKafkaData>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.BarometricPressure)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FahrenheitTemperature)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Humidity)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ClientName)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.BarometricPressure)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FahrenheitTemperature)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Humidity)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ClientName)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.TimeStamp }) |
+            @Html.ActionLink("Details", "Details", new { id=item.TimeStamp }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.TimeStamp })
+        </td>
+    </tr>
+}
+
+</table>

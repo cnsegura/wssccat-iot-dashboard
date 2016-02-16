@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using wssccatIotDashboard.Models;
 
 namespace wssccatIotDashboard.Controllers
 {
-    public class SensorDataController : Controller
+    public class GetKafkaDataController : Controller
     {
-        // GET: SensorData
+        // GET: GetKafkaData
         public ActionResult Index()
         {
             
