@@ -10,7 +10,7 @@ namespace wssccatIotDashboard.Controllers
     public class GetKafkaDataController : Controller
     {
         // GET: GetKafkaData
-        public ActionResult Index()
+        public ActionResult KafkaValues()
         {
             
             return View();
