@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace KafkaData
 {
-    class RESTConnectionMgr
+    public class RESTConnectionMgr
     {
         public async Task<HttpResponseMessage> CreateConsumer()
         {
@@ -36,9 +36,12 @@ namespace KafkaData
             baseFilter.AutomaticDecompression = System.Net.DecompressionMethods.None; //turn off all compression methods
             HttpClient httpClient = new HttpClient(baseFilter);
             //httpClient.BaseAddress = topicUri;
-            httpClient.DefaultRequestHeaders.Accept.Clear();
-            httpClient.DefaultRequestHeaders.AcceptEncoding.Clear();
-            httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/vnd.kafka.json.v1+json, application/vnd.kafka+json, application/json")); //Add Accept: application/vnd.kafka.json.vl+json, application... header )
+            //httpClient.DefaultRequestHeaders.Accept.Clear();
+            //httpClient.DefaultRequestHeaders.AcceptEncoding.Clear();
+            httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/vnd.kafka.json.v1+json")); //Add Accept: application/vnd.kafka.json.vl+json, application... header )
+            var headerContent = new HttpRequestMessage();
+            //headerContent.Content.Headers.ContentType = null; // removing all header content and will replace with the required values
+            headerContent.Content.Headers.ContentType = new MediaTypeHeaderValue("application/vnd.kafka.json.v1+json"); //Content-Type: application/vnd.kafka.json.v1+json
             HttpResponseMessage postResponse = await httpClient.PostAsync(topicUri, new StringContent(json));
             //FROM IOT CLIENT SIDE CODE - DELETE ONCE THE SERVER SIDE CODE WORKS
             //var headerContent = new HttpStringContent(json);
