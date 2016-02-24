@@ -72,16 +72,16 @@ namespace ECGCAT_IoT_Vending_Client
                 pin.Write(pinValue);
                 ReadWeatherData().ContinueWith((t) =>
                 {
-                    WeatherData wd = t.Result;
+                    SensorData sd = t.Result;
                     
-                    Debug.WriteLine(wd.Created);
+                    Debug.WriteLine(sd.Created);
                     //Write the values to your debug console
-                    Debug.WriteLine("Created: " + wd.Created + " ft");
-                    txtTime.Text = "Created: " + wd.Created + " ft";
-                    Debug.WriteLine("Temperature: " + wd.TemperatureinF + " deg F");
-                    txtTemp.Text = "Temperature: " + wd.TemperatureinF + " deg F";
-                    Debug.WriteLine("Pressure: " + wd.Pressureinmb + " mb");
-                    txtPressure.Text = "Pressure: " + wd.Pressureinmb + " mb";
+                    Debug.WriteLine("Created: " + sd.Created + " ft");
+                    txtTime.Text = "Created: " + sd.Created + " ft";
+                    Debug.WriteLine("Temperature: " + sd.TemperatureinF + " deg F");
+                    txtTemp.Text = "Temperature: " + sd.TemperatureinF + " deg F";
+                    Debug.WriteLine("Pressure: " + sd.Pressureinmb + " mb");
+                    txtPressure.Text = "Pressure: " + sd.Pressureinmb + " mb";
                     
 
                 }, TaskScheduler.FromCurrentSynchronizationContext());
@@ -103,9 +103,9 @@ namespace ECGCAT_IoT_Vending_Client
             }
         }
 
-        private async Task<WeatherData> ReadWeatherData()
+        private async Task<SensorData> ReadWeatherData()
         {
-            WeatherData wd = null;
+            SensorData sd = null;
             try
             {
                 if (BMP280 == null)
@@ -133,16 +133,16 @@ namespace ECGCAT_IoT_Vending_Client
                 altitude = await BMP280.ReadAltitude(seaLevelPressure);
                 altitude = ConvertUnits.ConvertMeterToFoot(altitude);
 
-                wd = new WeatherData();
-                wd.Created = DateTime.Now;
-                wd.TemperatureinF = temp;
-                wd.Pressureinmb = pressure;
+                sd = new SensorData();
+                sd.Created = DateTime.Now;
+                sd.TemperatureinF = temp;
+                sd.Pressureinmb = pressure;
             }
             catch (Exception ex)
             {
                 Debug.WriteLine(ex.Message);
             }
-            return wd;
+            return sd;
         }
 
         private async Task<LightData> ReadLightData()
@@ -158,8 +158,7 @@ namespace ECGCAT_IoT_Vending_Client
 
                 //Read the approximate color from the sensor
                 string colorRead = await colorSensor.getClosestColor();
-                //Output the colr name to the speaker
-                await Speak(" The current color is: " + colorRead);
+                
                 RgbData rgb = await colorSensor.getRgbData();
 
                 float lux = TCS34725.getLuxSimple(rgb);

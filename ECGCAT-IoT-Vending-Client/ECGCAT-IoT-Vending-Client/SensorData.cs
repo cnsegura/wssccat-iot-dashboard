@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ECGCAT_IoT_Vending_Client
 {
-    public class WeatherData
+    public class SensorData
     {
         public int Id { get; set; }
         public DateTime Created { get; set; }
