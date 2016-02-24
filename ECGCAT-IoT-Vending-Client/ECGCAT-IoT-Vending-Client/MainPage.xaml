@@ -15,33 +15,31 @@
                 Height="*" />
             <RowDefinition
                 Height="*" />
+            <RowDefinition
+                Height="*" />
+            <RowDefinition
+                Height="*" />
+            <RowDefinition
+                Height="*" />
         </Grid.RowDefinitions>
-        <Grid
-            Grid.Row="0"
-            Margin="0">
-            
-        </Grid>
-        <Grid
-            Grid.Row="1"
-            Margin="0">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition
                     Width="auto" />
-                <ColumnDefinition
+            <ColumnDefinition
+                    Width="200" />
+            <ColumnDefinition
                     Width="*" />
-            </Grid.ColumnDefinitions>
-        </Grid>
-        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center"
-                   Grid.Row="0" Grid.ColumnSpan="2">Contosso Vending Co.</TextBlock>
-        <Grid
-            Grid.Row="2"
-            Margin="0">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition
-                    Width="auto" />
-                <ColumnDefinition
-                    Width="*" />
-            </Grid.ColumnDefinitions>
-        </Grid>
+        </Grid.ColumnDefinitions>
+        <TextBlock FontSize="20" FontWeight="Bold" Grid.Row="0" Grid.ColumnSpan="3" HorizontalAlignment="Center" VerticalAlignment="Center">Contosso Vending Co.</TextBlock>
+        <TextBlock Text="Time: " Grid.Column="0" Grid.Row="1" ></TextBlock>
+        <TextBlock Text="Temperature: " Grid.Column="0" Grid.Row="2"></TextBlock>
+        <TextBlock Text="Humidity: " Grid.Column="0" Grid.Row="3"></TextBlock>
+        <TextBlock Text="Lux: " Grid.Column="0" Grid.Row="4"></TextBlock>
+        <TextBlock x:Name="time" Grid.Column="1" Grid.Row="1" ></TextBlock>
+        <TextBlock x:Name="temperature" Grid.Column="1" Grid.Row="2"></TextBlock>
+        <TextBlock x:Name="humidity" Grid.Column="1" Grid.Row="3"></TextBlock>
+        <TextBlock x:Name="lux" Grid.Column="1" Grid.Row="4"></TextBlock>
+        <TextBlock x:Name="logArea" Text="log" Grid.Row="5" Grid.ColumnSpan="2" ></TextBlock>
+        <Image Grid.Row="1" Grid.Column="2" Grid.RowSpan="5"></Image>
     </Grid>
 </Page>
