@@ -11,35 +11,35 @@
         <Grid.RowDefinitions>
             <RowDefinition
                 Height="auto" />
-            <RowDefinition
-                Height="*" />
-            <RowDefinition
-                Height="*" />
-            <RowDefinition
-                Height="*" />
-            <RowDefinition
-                Height="*" />
-            <RowDefinition
-                Height="*" />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition
                     Width="auto" />
             <ColumnDefinition
-                    Width="200" />
-            <ColumnDefinition
-                    Width="*" />
+                    Width="150" />
+            <ColumnDefinition />
         </Grid.ColumnDefinitions>
-        <TextBlock FontSize="20" FontWeight="Bold" Grid.Row="0" Grid.ColumnSpan="3" HorizontalAlignment="Center" VerticalAlignment="Center">Contosso Vending Co.</TextBlock>
-        <TextBlock Text="Time: " Grid.Column="0" Grid.Row="1" ></TextBlock>
-        <TextBlock Text="Temperature: " Grid.Column="0" Grid.Row="2"></TextBlock>
-        <TextBlock Text="Humidity: " Grid.Column="0" Grid.Row="3"></TextBlock>
-        <TextBlock Text="Lux: " Grid.Column="0" Grid.Row="4"></TextBlock>
-        <TextBlock x:Name="time" Grid.Column="1" Grid.Row="1" ></TextBlock>
-        <TextBlock x:Name="temperature" Grid.Column="1" Grid.Row="2"></TextBlock>
-        <TextBlock x:Name="humidity" Grid.Column="1" Grid.Row="3"></TextBlock>
-        <TextBlock x:Name="lux" Grid.Column="1" Grid.Row="4"></TextBlock>
-        <TextBlock x:Name="logArea" Text="log" Grid.Row="5" Grid.ColumnSpan="2" ></TextBlock>
-        <Image Grid.Row="1" Grid.Column="2" Grid.RowSpan="5"></Image>
+        <TextBlock FontSize="30" FontWeight="Bold" Grid.Row="0" Grid.ColumnSpan="3" HorizontalAlignment="Center" VerticalAlignment="Center">Contosso Vending Co.</TextBlock>
+        <TextBlock Text="Time: " Grid.Column="0" Grid.Row="1" VerticalAlignment="Center"></TextBlock>
+        <TextBlock Text="Temperature: " Grid.Column="0" Grid.Row="2" VerticalAlignment="Center"></TextBlock>
+        <TextBlock Text="Humidity: " Grid.Column="0" Grid.Row="3" VerticalAlignment="Center"></TextBlock>
+        <TextBlock Text="Lux: " Grid.Column="0" Grid.Row="4" VerticalAlignment="Center"></TextBlock>
+        <TextBlock x:Name="time" Grid.Column="1" Grid.Row="1" VerticalAlignment="Center"></TextBlock>
+        <TextBlock x:Name="temperature" Grid.Column="1" Grid.Row="2" VerticalAlignment="Center"></TextBlock>
+        <TextBlock x:Name="humidity" Grid.Column="1" Grid.Row="3" VerticalAlignment="Center"></TextBlock>
+        <TextBlock x:Name="lux" Grid.Column="1" Grid.Row="4" VerticalAlignment="Center"></TextBlock>
+        <TextBlock x:Name="logArea" Text="log" Grid.Row="5" Grid.ColumnSpan="2"></TextBlock>
+        <Image Grid.Row="1" Grid.Column="2" Grid.RowSpan="5">
+            <Image.Source>
+                <BitmapImage DecodePixelWidth="600" UriSource="Assets/bottles900x600.jpg" />
+            </Image.Source>
+        </Image>
+        <Button Content="Dispense" Grid.Column="2" Grid.Row="5" ClickMode="Press" Background="ForestGreen" Height="75" Width="150" FontSize="20" Margin="547.8,35,0,10"></Button>
+        <Button Content="Select" Grid.Column="2" Grid.Row="5" ClickMode="Press" Background="ForestGreen" Height="75" Width="150" FontSize="20" Margin="100.8,35,0,10"></Button>
     </Grid>
 </Page>
