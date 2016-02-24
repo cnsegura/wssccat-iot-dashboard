@@ -77,11 +77,11 @@ namespace ECGCAT_IoT_Vending_Client
                     Debug.WriteLine(sd.Created);
                     //Write the values to your debug console
                     Debug.WriteLine("Created: " + sd.Created + " ft");
-                    txtTime.Text = "Created: " + sd.Created + " ft";
+                    time.Text = sd.Created.ToString();
                     Debug.WriteLine("Temperature: " + sd.TemperatureinF + " deg F");
-                    txtTemp.Text = "Temperature: " + sd.TemperatureinF + " deg F";
+                    temperature.Text = sd.TemperatureinF + " deg F";
                     Debug.WriteLine("Pressure: " + sd.Pressureinmb + " mb");
-                    txtPressure.Text = "Pressure: " + sd.Pressureinmb + " mb";
+                    pressure.Text = sd.Pressureinmb + " mb";
                     
 
                 }, TaskScheduler.FromCurrentSynchronizationContext());
