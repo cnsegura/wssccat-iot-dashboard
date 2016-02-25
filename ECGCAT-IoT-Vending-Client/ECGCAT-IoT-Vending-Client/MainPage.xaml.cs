@@ -37,10 +37,18 @@ namespace ECGCAT_IoT_Vending_Client
             this.InitializeComponent();
 
             LoggerTimer = new DispatcherTimer();
-            LoggerTimer.Interval = TimeSpan.FromMinutes(1);
+            LoggerTimer.Interval = TimeSpan.FromSeconds(3); //take data every 3 seconds
             LoggerTimer.Tick += LoggerTimer_Tick;
 
             InitGPIO();
+
+            if (pin != null)
+            {
+                LoggerTimer_Tick(this, null);
+                LoggerTimer.Start();
+                //Timer_Tick(this, null);
+                //Timer.Start();
+            }
         }
 
         private void InitGPIO()
